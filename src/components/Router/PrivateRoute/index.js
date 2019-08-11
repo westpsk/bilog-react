@@ -4,8 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 
 class PrivateRoute extends React.Component{
   render(){
-    let { component: Component, store, ...rest } = this.props
-    console.log(this.props, '====')
+    const { component: Component, store, ...rest } = this.props
     return (
       <Route
         {...rest}

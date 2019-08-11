@@ -1,11 +1,10 @@
 import React from 'react';
-// 一般来说，如果你有一个响应请求的服务器，则你应该使用 <BrowserRouter> ，如果你使用的是静态文件的服务器，则应该使用 <HashRouter>
 import {
   BrowserRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
-import Loadable from 'react-loadable';// react-loadable 对于有动态导入的组件来说是一个高阶组件。它可以自动处理各种边缘情况，并且使代码拆分变得简单！
+import Loadable from 'react-loadable';
 import routeConfig from 'config/routes.config'
 import Loading from 'components/Loading'
 import LoginRoute from './LoginRoute'
@@ -59,6 +58,7 @@ function loopRoutes(routes, match = {}) {
         path="/login"
         component={getLoadableComponent(() => import('pages/Login'))}
       />
+      <Route component={getLoadableComponent(() => import('pages/404'))}/>
     </Switch>
   );
 }

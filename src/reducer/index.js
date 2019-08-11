@@ -1,7 +1,7 @@
 const initState = {
   appId: '',
   modalShow: false,
-  isAuthenticated:false,
+  isAuthenticated:true,
   isLoginIng:false
 };
 

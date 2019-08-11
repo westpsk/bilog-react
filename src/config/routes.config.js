@@ -1,30 +1,22 @@
 module.exports = [{
+    path: '/',
+    name: 'index',
+    component: ()=>import('pages/Home'),
+  }, {
+    path: '/login',
+    name: 'login',
+    component: ()=>import('pages/Login'),
+  }, {
+    path: '/404',
+    component: ()=>import('pages/404'),
+  }, {
   path: '/',
-  component: ()=>import('pages/Home'),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      icon: 'smile',
-      component: ()=>import('pages/Home'),
-    },
-    {
-      path: '/welcome',
+      path: 'welcome',
       name: 'welcome',
       icon: 'smile',
       component: ()=>import('pages/Welcome'),
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: ()=>import('pages/Login'),
-    },
-    {
-      path: '/404',
-      component: ()=>import('pages/404'),
-    },
-  ]}, {
-    path: '/404',
-    component: ()=>import('pages/404'),
-  }
+    }
+  ]}
 ]
