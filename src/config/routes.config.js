@@ -1,14 +1,10 @@
 module.exports = [{
     path: '/',
     name: 'index',
-    component: ()=>import('pages/Home'),
+    component: ()=>import(/* webpackChunkName: "home" */'pages/Home'),
   }, {
-    path: '/login',
-    name: 'login',
-    component: ()=>import('pages/Login'),
-  }, {
-    path: '/404',
-    component: ()=>import('pages/404'),
+    path: '/sort',
+    component: ()=>import(/* webpackChunkName: "sort" */'pages/Sort'),
   }, {
   path: '/',
   routes: [
@@ -16,7 +12,7 @@ module.exports = [{
       path: 'welcome',
       name: 'welcome',
       icon: 'smile',
-      component: ()=>import('pages/Welcome'),
+      component: ()=>import(/* webpackChunkName: "Welcome" */'pages/Welcome'),
     }
   ]}
 ]

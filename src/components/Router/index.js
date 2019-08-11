@@ -56,9 +56,9 @@ function loopRoutes(routes, match = {}) {
       <LoginRoute
         exact
         path="/login"
-        component={getLoadableComponent(() => import('pages/Login'))}
+        component={getLoadableComponent(() => import(/* webpackChunkName: "login" */'pages/Login'))}
       />
-      <Route component={getLoadableComponent(() => import('pages/404'))}/>
+      <Route component={getLoadableComponent(() => import(/* webpackChunkName: "notfound" */'pages/404'))}/>
     </Switch>
   );
 }
