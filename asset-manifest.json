@@ -1,0 +1,24 @@
+{
+  "files": {
+    "Welcome.js": "/bilog-react/static/js/Welcome.c7af8791.chunk.js",
+    "Welcome.js.map": "/bilog-react/static/js/Welcome.c7af8791.chunk.js.map",
+    "home.js": "/bilog-react/static/js/home.2a3776a2.chunk.js",
+    "home.js.map": "/bilog-react/static/js/home.2a3776a2.chunk.js.map",
+    "login.js": "/bilog-react/static/js/login.9931b9cf.chunk.js",
+    "login.js.map": "/bilog-react/static/js/login.9931b9cf.chunk.js.map",
+    "main.js": "/bilog-react/static/js/main.d24f6140.chunk.js",
+    "main.js.map": "/bilog-react/static/js/main.d24f6140.chunk.js.map",
+    "notfound.js": "/bilog-react/static/js/notfound.6dcabcff.chunk.js",
+    "notfound.js.map": "/bilog-react/static/js/notfound.6dcabcff.chunk.js.map",
+    "runtime~main.js": "/bilog-react/static/js/runtime~main.d275627c.js",
+    "runtime~main.js.map": "/bilog-react/static/js/runtime~main.d275627c.js.map",
+    "sort.js": "/bilog-react/static/js/sort.911580d5.chunk.js",
+    "sort.js.map": "/bilog-react/static/js/sort.911580d5.chunk.js.map",
+    "static/js/7.a2824951.chunk.js": "/bilog-react/static/js/7.a2824951.chunk.js",
+    "static/js/7.a2824951.chunk.js.map": "/bilog-react/static/js/7.a2824951.chunk.js.map",
+    "index.html": "/bilog-react/index.html",
+    "precache-manifest.6c79891ba0760fad6108034b02c0ab4f.js": "/bilog-react/precache-manifest.6c79891ba0760fad6108034b02c0ab4f.js",
+    "service-worker.js": "/bilog-react/service-worker.js",
+    "static/media/index.less": "/bilog-react/static/media/index.738360e2.less"
+  }
+}
