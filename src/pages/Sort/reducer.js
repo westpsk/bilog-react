@@ -43,7 +43,6 @@ export default function (state = initState, action) {
       }  = state
       let a = payload.indexes[0]
       let b = payload.indexes[1]
-      console.log(swapValues, swapStrValues, swapCards, '====begin')
 
       // 交换真实的值
       let temp = swapValues[a]
@@ -57,9 +56,8 @@ export default function (state = initState, action) {
 
       // 重新定义state.cards的每个成员的sortIndex属性
       swapCards.forEach((card) => {
-        swapCards.sortIndex = swapStrValues.indexOf(card.strValue)
+        card.sortIndex = swapStrValues.indexOf(card.strValue)
       })
-      console.log(swapValues, swapStrValues, swapCards, '====end')
       return {
         ...state,
         values: swapValues,
@@ -90,6 +88,7 @@ export default function (state = initState, action) {
       }
     case 'SORT_LOCK':
       const lockCards = state.cards
+      console.log('lock => ', payload.indexes)
       payload.indexes.forEach((index) => {
         lockCards.forEach((card) => {
           if (card.sortIndex === index) card.isLocked = true

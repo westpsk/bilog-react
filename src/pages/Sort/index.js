@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import * as action from './action.js';
 import './style.css';
 
-const EVENT_DELAY = 200 // 交换的过渡时间
-const HEIGHT_INCREMENT = 20 // 高度的增量, 数组的某一个值 * 增量 = 长方形高度
-const SORT_ARRAY = [16, 11] // 进行冒泡排序的数组
+const EVENT_DELAY = 100 // 交换的过渡时间
+const HEIGHT_INCREMENT = 3 // 高度的增量, 数组的某一个值 * 增量 = 长方形高度
+const INIT_SORT_NUM = 20
 
 class Sort extends React.Component {
 
@@ -19,22 +19,18 @@ class Sort extends React.Component {
   }
 
   componentDidMount(){
-    let values = SORT_ARRAY.slice()
-    this.props.actionSortRest({
-      values
-    })
+    this.getRandomArray()
+  }
 
-    // 排序数组，返回一个包括每步的值 和 每步状态的数组
-    let sequence = this.bubbleSort(values)
-
-    // 遍历上边排序得到的数组，定时执行操作，实现动画效果
-    sequence.forEach((event, index) => {
-      setTimeout(() => {
-        if(typeof event === 'function'){
-          event()
-        }
-      }, index * EVENT_DELAY)
-    })
+  // 随机生成1到100的值
+  getRandomArray = (nums = INIT_SORT_NUM) => {
+    let values = []
+    while(nums){
+      values.push(Math.ceil(Math.random() * 100))
+      nums--
+    }
+    this.setState({ values })
+    this.props.actionSortRest({ values })
   }
 
   // 冒泡排序方法，返回包括每一步的数组
@@ -45,7 +41,6 @@ class Sort extends React.Component {
     let swapped
     // indexLastUnsorted 用来减少不必要的循环
     let indexLastUnsorted = values.length - 1
-
     do {
       swapped = false
       for (let i = 0; i < indexLastUnsorted; i++) {
@@ -71,8 +66,9 @@ class Sort extends React.Component {
         )
       }
       // 外层循环，每循环完一次，就锁定最后一个card，下次这个card 就不参与循环
+      let lockIndex = indexLastUnsorted
       sequence.push(
-        () => this.props.actionSortLock({indexes: [indexLastUnsorted]})
+        () => this.props.actionSortLock({indexes: [lockIndex]})
       )
       indexLastUnsorted--
     } while (swapped)
@@ -87,27 +83,59 @@ class Sort extends React.Component {
     return sequence
   }
 
+  onChange = (e) => {
+    console.log(e.target.value)
+    const nums = parseInt(e.target.value)
+    this.getRandomArray(nums)
+  }
+
+  start = () => {
+    // 排序数组，返回一个包括每步的值 和 每步状态的数组
+    const { values } = this.state
+    this.props.actionSortRest({ values })
+    let sequence = this.bubbleSort(values.slice())
+    // 遍历上边排序得到的数组，定时执行操作，实现动画效果
+    sequence.forEach((event, index) => {
+      setTimeout(() => {
+        if(typeof event === 'function'){
+          event()
+        }
+      }, index * EVENT_DELAY)
+    })
+  }
+
   render() {
     const { cards } = this.props.sort
+    const { values } = this.state
     return (
-      <div className="cards">
-      {
-        cards.map((card, index) => {
-          return (
-            <div className="card-wrapper"
-              style={{height: card.value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+card.sortIndex*100+'%)'}}
-              key={index}
-            >
-              <div className={classNames('card', {
-                'card-active': card.isActive,
-                'card-locked': card.isLocked
-              })}>
-                <div className="value">{card.value}</div>
+      <div className="wrapper">
+        <div className="options">
+          <input onChange={this.onChange} placeholder="请输入排序长度"/>
+          <button onClick={this.start}>开始排序</button>
+          <p>
+            要排序的数组：{values.join(' ')}
+          </p>
+        </div>
+        
+        <div className="cards">
+        {
+          cards.map((card, index) => {
+            return (
+              <div className="card-wrapper"
+                style={{height: card.value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+card.sortIndex*100+'%)'}}
+                key={index}
+              >
+                <div className={classNames('card', {
+                  'card-active': card.isActive,
+                  'card-locked': card.isLocked
+                })}>
+                  {/*<div className="value">{card.value}</div>*/}
+                </div>
               </div>
-            </div>
-          )
-        })
-      }
+            )
+          })
+        }
+        </div>
       </div>
     )
   }
