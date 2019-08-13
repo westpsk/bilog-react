@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/Welcome/index.js"],"names":["Welcome"],"mappings":"qHAAA,2BAMeA,UAJC,WACd,OAAO","file":"static/js/Welcome.a8a895e4.chunk.js","sourcesContent":["import React from 'react';\n\nconst Welcome = () => {\n  return <div>Welcome</div>\n}\n\nexport default Welcome"],"sourceRoot":""}

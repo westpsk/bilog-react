@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/404/index.js"],"names":["NotFoundPage"],"mappings":"qHAAA,2BAMeA,UAJM,WACnB,OAAO","file":"static/js/notfound.6dcabcff.chunk.js","sourcesContent":["import React from 'react';\n\nconst NotFoundPage = () => {\n  return <div>this is 404</div>\n}\n\nexport default NotFoundPage"],"sourceRoot":""}
