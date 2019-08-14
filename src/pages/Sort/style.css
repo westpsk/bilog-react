@@ -5,8 +5,8 @@
 html,body{
   padding: 0;
   margin: 0;
-  background: #000;
-  color: #fff;
+  /* background: #000; */
+  /* color: #fff; */
 }
 
 #root {
@@ -14,36 +14,41 @@ html,body{
   margin: 0 auto;
 }
 
-input {
-  line-height: 26px;
-  margin-right: 25px;
-  font-size: 18px;
-  padding-left: 10px;
-}
-
 button {
   background: #3085e8;
-  border: none;
   padding: 6px 16px;
   border-radius: 2px;
   color: #fff;
   font-size: 14px;
 }
 
+.sort-btn {
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
 .options {
   margin-top: 100px;
+}
+
+.sort-nums {
+  max-height: 100px;
+  overflow: scroll;
 }
 
 .cards {
   position: relative;
   height: 400px;
   color: #fff;
-  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #000; */
 }
 
 .card-wrapper {
   position: absolute;
   bottom: 0;
+  border: 1px solid transparent;
   transition: -webkit-transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -52,11 +57,8 @@ button {
 .card {
   position: relative;
   height: 100%;
-  width: 15px;
-  margin: 0 5px;
-  border: 1px solid #ff3179;
-  background-color: #000;
-  box-shadow: 0 0 25px #c2255c;
+  width: 100%;
+  background-color: #ff3179;
 }
 
 .card-active {

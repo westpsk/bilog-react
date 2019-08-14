@@ -1,16 +1,24 @@
 import React from "react";
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+import { Select, InputNumber, Slider } from 'antd'
 import * as action from './action.js';
+import 'antd/lib/slider/style/css'
+import 'antd/lib/select/style/css'
+import 'antd/lib/input-number/style/css'
 import './style.css';
 
-const EVENT_DELAY = 100 // 交换的过渡时间
+const Option = Select.Option
+const INIT_EVENT_DELAY = 20 // 交换的过渡时间
+const DELAY_UNIT = 1000
 const HEIGHT_INCREMENT = 3 // 高度的增量, 数组的某一个值 * 增量 = 长方形高度
 const INIT_SORT_NUM = 20
+const Timer = {}
 
 class Sort extends React.Component {
 
   state = {
+    delay: 100,
     values: [], // 值为 SORT_ARRAY 的副本
     cards: [], // 可视化需要的数组，就是每一个长方形（div元素），数组的每一个值都代表一个div元素
     done: true, // 表示是否排序完成，为true时，右下角出现重置按钮
@@ -29,8 +37,9 @@ class Sort extends React.Component {
       values.push(Math.ceil(Math.random() * 100))
       nums--
     }
-    this.setState({ values })
-    this.props.actionSortRest({ values })
+    this.setState({ values }, () => {
+      this.restSort()
+    })
   }
 
   // 冒泡排序方法，返回包括每一步的数组
@@ -83,24 +92,43 @@ class Sort extends React.Component {
     return sequence
   }
 
-  onChange = (e) => {
-    console.log(e.target.value)
-    const nums = parseInt(e.target.value)
-    this.getRandomArray(nums)
+  onChange = (value) => {
+    this.getRandomArray(value)
   }
 
+  handleSelectChange = (value) => {
+    this.getRandomArray(Number(value))
+  }
+
+  onSliderAfterChange = (value=1) => {
+    this.setState({
+      delay: DELAY_UNIT/value
+    }, () => {
+      this.restSort()
+    })
+  }
+
+  restSort = () => {
+    const { values } = this.state
+    for(var each in Timer){
+      clearInterval(Timer[each]);
+    }
+    this.props.actionSortRest({ values })
+  }
+
+  // todo stop timeout
   start = () => {
     // 排序数组，返回一个包括每步的值 和 每步状态的数组
-    const { values } = this.state
-    this.props.actionSortRest({ values })
+    const { values, delay } = this.state
+    this.restSort()
     let sequence = this.bubbleSort(values.slice())
     // 遍历上边排序得到的数组，定时执行操作，实现动画效果
     sequence.forEach((event, index) => {
-      setTimeout(() => {
+      Timer[`timer${index}`] = setTimeout(() => {
         if(typeof event === 'function'){
           event()
         }
-      }, index * EVENT_DELAY)
+      }, index * delay)
     })
   }
 
@@ -110,11 +138,27 @@ class Sort extends React.Component {
     return (
       <div className="wrapper">
         <div className="options">
-          <input onChange={this.onChange} placeholder="请输入排序长度"/>
-          <button onClick={this.start}>开始排序</button>
-          <p>
+          <span className="label">选择长度：</span>
+          <Select defaultValue="20" onChange={this.handleSelectChange}>
+            <Option value="10">10</Option>
+            <Option value="20">20</Option>
+            <Option value="30">30</Option>
+            <Option value="50">50</Option>
+          </Select>
+
+          <span className="label" style={{marginLeft: 40}}>输入长度：</span>
+          <InputNumber
+            min={1}
+            max={200}
+            defaultValue={INIT_EVENT_DELAY}
+            onChange={this.onChange}
+            placeholder="请输入排序长度"
+          />
+          <button onClick={this.start} className="sort-btn">开始排序</button>
+          <Slider defaultValue={INIT_EVENT_DELAY} onAfterChange={this.onSliderAfterChange} />
+          {/**<div className="sort-nums">
             要排序的数组：{values.join(' ')}
-          </p>
+          </div> */}
         </div>
         
         <div className="cards">
@@ -122,13 +166,14 @@ class Sort extends React.Component {
           cards.map((card, index) => {
             return (
               <div className="card-wrapper"
-                style={{height: card.value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+card.sortIndex*100+'%)'}}
+                style={{height: card.value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+card.sortIndex*100+'%)', width: `${100/values.length}%`}}
                 key={index}
               >
                 <div className={classNames('card', {
                   'card-active': card.isActive,
                   'card-locked': card.isLocked
-                })}>
+                })}
+                >
                   {/*<div className="value">{card.value}</div>*/}
                 </div>
               </div>
