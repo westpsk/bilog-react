@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "04c254a6fa7ab7a2dd9c9dfc6b85143c",
+    "revision": "e2def9ba6d1621e89b38be3c88bda04b",
     "url": "/bilog-react/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bilog-react/static/css/7.0d077c34.chunk.css"
   },
   {
-    "revision": "c57c917aacce9ce082b3",
-    "url": "/bilog-react/static/css/sort.62ea588e.chunk.css"
+    "revision": "c0e98b4da94755e08139",
+    "url": "/bilog-react/static/css/sort.2f073aeb.chunk.css"
   },
   {
     "revision": "cd369d4664df29e12daf",
@@ -40,12 +40,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bilog-react/static/js/notfound.24dd0529.chunk.js"
   },
   {
-    "revision": "e904291ac6f226dc74de",
-    "url": "/bilog-react/static/js/runtime~main.50b65ca6.js"
+    "revision": "226824a98b881fe4f5c7",
+    "url": "/bilog-react/static/js/runtime~main.b8e702d5.js"
   },
   {
-    "revision": "c57c917aacce9ce082b3",
-    "url": "/bilog-react/static/js/sort.28e4a728.chunk.js"
+    "revision": "c0e98b4da94755e08139",
+    "url": "/bilog-react/static/js/sort.373093be.chunk.js"
   },
   {
     "revision": "738360e235cbeb702630d1185ea1a451",
