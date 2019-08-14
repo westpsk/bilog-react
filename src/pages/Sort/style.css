@@ -75,7 +75,7 @@ html,body{
           filter: hue-rotate(280deg);
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 420px) {
   .options {
     margin-top: 20px;
   }
