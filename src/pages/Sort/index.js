@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { Select, InputNumber, Slider } from 'antd'
+import { Select, InputNumber, Slider, Button } from 'antd'
 import * as action from './action.js';
+import 'antd/lib/button/style/css'
 import 'antd/lib/slider/style/css'
 import 'antd/lib/select/style/css'
 import 'antd/lib/input-number/style/css'
@@ -18,6 +19,7 @@ const Timer = {}
 class Sort extends React.Component {
 
   state = {
+    disabled: false,
     delay: 100,
     values: [], // 值为 SORT_ARRAY 的副本
     cards: [], // 可视化需要的数组，就是每一个长方形（div元素），数组的每一个值都代表一个div元素
@@ -113,6 +115,9 @@ class Sort extends React.Component {
     for(var each in Timer){
       clearInterval(Timer[each]);
     }
+    this.setState({
+      disabled: false
+    })
     this.props.actionSortRest({ values })
   }
 
@@ -121,6 +126,9 @@ class Sort extends React.Component {
     // 排序数组，返回一个包括每步的值 和 每步状态的数组
     const { values, delay } = this.state
     this.restSort()
+    this.setState({
+      disabled: true
+    })
     let sequence = this.bubbleSort(values.slice())
     // 遍历上边排序得到的数组，定时执行操作，实现动画效果
     sequence.forEach((event, index) => {
@@ -134,7 +142,7 @@ class Sort extends React.Component {
 
   render() {
     const { cards } = this.props.sort
-    const { values } = this.state
+    const { values, disabled } = this.state
     return (
       <div className="wrapper">
         <div className="options">
@@ -158,7 +166,13 @@ class Sort extends React.Component {
             />
           </span>
           <span className="options-item">
-            <button onClick={this.start} className="sort-btn">开始排序</button>
+            <Button
+              onClick={this.start}
+              disabled={disabled}
+              type="primary"
+            >
+              开始排序
+            </Button>
           </span>
           <Slider defaultValue={INIT_EVENT_DELAY} onAfterChange={this.onSliderAfterChange} />
           {/**<div className="sort-nums">
