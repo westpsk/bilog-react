@@ -82,9 +82,6 @@ html,body{
   .cards{
     height: 350px;
   }
-  .card-wrapper{
-    border: none;
-  }
   .options-item {
     display: block;
   }

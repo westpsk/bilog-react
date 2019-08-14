@@ -88,7 +88,6 @@ export default function (state = initState, action) {
       }
     case 'SORT_LOCK':
       const lockCards = state.cards
-      console.log('lock => ', payload.indexes)
       payload.indexes.forEach((index) => {
         lockCards.forEach((card) => {
           if (card.sortIndex === index) card.isLocked = true

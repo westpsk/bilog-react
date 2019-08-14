@@ -186,7 +186,7 @@ class Sort extends React.Component {
             return (
               <div className="card-wrapper"
                 className={classNames('card-wrapper', {
-                  'card-no-border': values.length > 100
+                  'card-no-border': values.length > 60
                 })}
                 style={{height: card.value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+card.sortIndex*100+'%)', width: `${100/values.length}%`}}
                 key={index}
