@@ -138,23 +138,28 @@ class Sort extends React.Component {
     return (
       <div className="wrapper">
         <div className="options">
-          <span className="label">选择长度：</span>
-          <Select defaultValue="20" onChange={this.handleSelectChange}>
-            <Option value="10">10</Option>
-            <Option value="20">20</Option>
-            <Option value="30">30</Option>
-            <Option value="50">50</Option>
-          </Select>
-
-          <span className="label" style={{marginLeft: 40}}>输入长度：</span>
-          <InputNumber
-            min={1}
-            max={200}
-            defaultValue={INIT_EVENT_DELAY}
-            onChange={this.onChange}
-            placeholder="请输入排序长度"
-          />
-          <button onClick={this.start} className="sort-btn">开始排序</button>
+          <span className="options-item">
+            <span className="label">选择长度：</span>
+            <Select defaultValue="20" onChange={this.handleSelectChange}>
+              <Option value="10">10</Option>
+              <Option value="20">20</Option>
+              <Option value="30">30</Option>
+              <Option value="50">50</Option>
+            </Select>
+          </span>
+          <span className="options-item">
+            <span className="label">输入长度：</span>
+            <InputNumber
+              min={1}
+              max={200}
+              defaultValue={INIT_EVENT_DELAY}
+              onChange={this.onChange}
+              placeholder="请输入排序长度"
+            />
+          </span>
+          <span className="options-item">
+            <button onClick={this.start} className="sort-btn">开始排序</button>
+          </span>
           <Slider defaultValue={INIT_EVENT_DELAY} onAfterChange={this.onSliderAfterChange} />
           {/**<div className="sort-nums">
             要排序的数组：{values.join(' ')}
@@ -166,6 +171,9 @@ class Sort extends React.Component {
           cards.map((card, index) => {
             return (
               <div className="card-wrapper"
+                className={classNames('card-wrapper', {
+                  'card-no-border': values.length > 100
+                })}
                 style={{height: card.value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+card.sortIndex*100+'%)', width: `${100/values.length}%`}}
                 key={index}
               >
