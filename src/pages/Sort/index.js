@@ -35,7 +35,7 @@ class Sort extends React.Component {
   // 随机生成1到100的值
   getRandomArray = (nums = INIT_SORT_NUM) => {
     let values = []
-    while(nums){
+    while(nums > 0){
       values.push(Math.ceil(Math.random() * 100))
       nums--
     }
