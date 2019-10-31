@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.21.4",
+    "axios": "^0.19.0",
     "classname": "^0.0.0",
     "classnames": "^2.2.6",
     "gh-pages": "^2.1.1",
@@ -39,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "form-data": "^2.5.1"
   }
 }

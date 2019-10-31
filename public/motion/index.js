@@ -458,9 +458,10 @@ vertex3d.prototype = {
 		};
 	};
 	var textSet = [
-		{text:"DEAR_GUAGUA", sphereRadius:140, sphereSpace:80, unitTime:10, time:6000},
-    {text:"HAPPY_BIRTHDAY", sphereRadius:150, sphereSpace:70, unitTime:10, time:10000},
-		{text:"@@@@@@@", sphereRadius:120, sphereSpace:70, unitTime:50, time:15000},
+		{text:"DEAR_GUAGUA", sphereRadius:140, sphereSpace:70, unitTime:10, time:3000},
+    {text:"HAPPY_BIRTHDAY", sphereRadius:130, sphereSpace:60, unitTime:10, time:10000},
+    {text:"@@@@@@@", sphereRadius:120, sphereSpace:70, unitTime:50, time:10000},
+    {text:"LOVE_YOU", sphereRadius:140, sphereSpace:70, unitTime:10, time:10000},
 	];
 	
 	var textSetChangerIncrement = 0;
