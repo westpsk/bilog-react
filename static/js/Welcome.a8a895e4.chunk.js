@@ -1,2 +1,0 @@
-(window["webpackJsonpbilog-react"]=window["webpackJsonpbilog-react"]||[]).push([[0],{47:function(e,n,t){"use strict";t.r(n);var c=t(0),o=t.n(c);n.default=function(){return o.a.createElement("div",null,"Welcome")}}}]);
-//# sourceMappingURL=Welcome.a8a895e4.chunk.js.map
