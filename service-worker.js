@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bilog-react/precache-manifest.49cecc9b4fd09908aa6bf6adf841b289.js"
+  "/bilog-react/precache-manifest.b50ca319d9d2b9c5bf320b62fbec58a9.js"
 );
 
 self.addEventListener('message', (event) => {
