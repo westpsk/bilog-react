@@ -6,13 +6,17 @@ module.exports = [{
     path: '/sort',
     component: ()=>import(/* webpackChunkName: "sort" */'pages/Sort'),
   }, {
-  path: '/',
-  routes: [
-    {
-      path: 'welcome',
-      name: 'welcome',
-      icon: 'smile',
-      component: ()=>import(/* webpackChunkName: "Welcome" */'pages/Welcome'),
-    }
-  ]}
+    path: '/time',
+    component: ()=>import(/* webpackChunkName: "sort" */'pages/Time'),
+  }, {
+    path: '/',
+    routes: [
+      {
+        path: 'welcome',
+        name: 'welcome',
+        icon: 'smile',
+        component: ()=>import(/* webpackChunkName: "Welcome" */'pages/Welcome'),
+      }
+    ]
+  }
 ]
